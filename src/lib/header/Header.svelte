@@ -33,6 +33,7 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+		background-color: orange;
 	}
 
 	.corner {
