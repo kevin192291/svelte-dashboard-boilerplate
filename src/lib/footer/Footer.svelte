@@ -1,3 +1,3 @@
 <footer>
-    <p>I am the footer</p>
+    <div class="footer_copyright">Made for CropWatch LLC with &hearts;</div>
 </footer>
