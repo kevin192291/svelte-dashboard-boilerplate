@@ -41,6 +41,50 @@
         type: "heatmap",
         
       },
+      plotOptions: {
+        heatmap: {
+            radius: 2,
+            enableShades: true,
+            shadeIntensity: 0.5,
+            reverseNegativeShade: true,
+            distributed: false,
+            useFillColorAsStroke: false,
+            colorScale: {
+              ranges: [{
+                  from: 0,
+                  to: 10,
+                  color: "blue",
+                  fillColor: "red",
+                  name: 'cold'
+              },
+              {
+                  from: 11,
+                  to: 20,
+                  color: "yellow",
+                  fillColor: "red",
+                  name: 'cool'
+              },
+              {
+                  from: 20,
+                  to: 23,
+                  color: "green",
+                  fillColor: "red",
+                  name: 'warm'
+              },
+              {
+                  from: 23,
+                  to: 45,
+                  color: "red",
+                  fillColor: "red",
+                  name: 'hot'
+              },
+            ],
+              inverse: false,
+              min: 0,
+              max: 44
+            },        
+        }
+    },
       series: [
         {
           name: "Month 1",
@@ -107,7 +151,7 @@
           }]
         },
         {
-          name: "Month 1",
+          name: "Month 5",
           data: [{
             x: 'W1',
             y: 22
@@ -123,7 +167,7 @@
           }]
         },
         {
-          name: "Month 2",
+          name: "Month 6",
           data: [{
             x: 'W1',
             y: 43
@@ -139,7 +183,7 @@
           }]
         },
         {
-          name: "Month 3",
+          name: "Month 7",
           data: [{
             x: 'W1',
             y: 43
@@ -155,7 +199,7 @@
           }]
         },
         {
-          name: "Month 4",
+          name: "Month 8",
           data: [{
             x: 'W1',
             y: 43
@@ -171,71 +215,7 @@
           }]
         },
         {
-          name: "Month 1",
-          data: [{
-            x: 'W1',
-            y: 22
-          }, {
-            x: 'W2',
-            y: 29
-          }, {
-            x: 'W3',
-            y: 13
-          }, {
-            x: 'W4',
-            y: 32
-          }]
-        },
-        {
-          name: "Month 2",
-          data: [{
-            x: 'W1',
-            y: 43
-          }, {
-            x: 'W2',
-            y: 43
-          }, {
-            x: 'W3',
-            y: 43
-          }, {
-            x: 'W4',
-            y: 43
-          }]
-        },
-        {
-          name: "Month 3",
-          data: [{
-            x: 'W1',
-            y: 43
-          }, {
-            x: 'W2',
-            y: 43
-          }, {
-            x: 'W3',
-            y: 43
-          }, {
-            x: 'W4',
-            y: 43
-          }]
-        },
-        {
-          name: "Month 4",
-          data: [{
-            x: 'W1',
-            y: 43
-          }, {
-            x: 'W2',
-            y: 43
-          }, {
-            x: 'W3',
-            y: 43
-          }, {
-            x: 'W4',
-            y: 43
-          }]
-        },
-        {
-          name: "Month 1",
+          name: "Month 9",
           data: [{
             x: 'W1',
             y: 22
@@ -251,7 +231,7 @@
           }]
         },
         {
-          name: "Month 2",
+          name: "Month 10",
           data: [{
             x: 'W1',
             y: 43
@@ -267,7 +247,7 @@
           }]
         },
         {
-          name: "Month 3",
+          name: "Month 11",
           data: [{
             x: 'W1',
             y: 43
@@ -283,7 +263,7 @@
           }]
         },
         {
-          name: "Month 4",
+          name: "Month 12",
           data: [{
             x: 'W1',
             y: 43
