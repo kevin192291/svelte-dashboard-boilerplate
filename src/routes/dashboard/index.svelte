@@ -39,11 +39,11 @@
     let heat_options = {
       chart: {
         type: "heatmap",
-        height: "75%",
+        
       },
       series: [
         {
-          name: "Series 1",
+          name: "Month 1",
           data: [{
             x: 'W1',
             y: 22
@@ -59,7 +59,7 @@
           }]
         },
         {
-          name: "Series 2",
+          name: "Month 2",
           data: [{
             x: 'W1',
             y: 43
@@ -73,13 +73,240 @@
             x: 'W4',
             y: 43
           }]
-        }
+        },
+        {
+          name: "Month 3",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 4",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 1",
+          data: [{
+            x: 'W1',
+            y: 22
+          }, {
+            x: 'W2',
+            y: 29
+          }, {
+            x: 'W3',
+            y: 13
+          }, {
+            x: 'W4',
+            y: 32
+          }]
+        },
+        {
+          name: "Month 2",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 3",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 4",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 1",
+          data: [{
+            x: 'W1',
+            y: 22
+          }, {
+            x: 'W2',
+            y: 29
+          }, {
+            x: 'W3',
+            y: 13
+          }, {
+            x: 'W4',
+            y: 32
+          }]
+        },
+        {
+          name: "Month 2",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 3",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 4",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 1",
+          data: [{
+            x: 'W1',
+            y: 22
+          }, {
+            x: 'W2',
+            y: 29
+          }, {
+            x: 'W3',
+            y: 13
+          }, {
+            x: 'W4',
+            y: 32
+          }]
+        },
+        {
+          name: "Month 2",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 3",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
+        {
+          name: "Month 4",
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        },
       ]
     };
     let npk_options = {
       chart: {
         type: "radar",
         height: "75%",
+      },
+      legend: {
+        show: false,
       },
     series: [
       {
@@ -122,7 +349,7 @@
         <div use:chart={bar_options} />
       </div>
       <div class="card">
-        <h3>Heat Over Time</h3>
+        <h3>Average Heat By Week</h3>
         <div use:chart={heat_options} />
       </div>
       <div class="card">
