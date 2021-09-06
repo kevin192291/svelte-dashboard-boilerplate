@@ -26,7 +26,7 @@ body {
 	display: flex;
   	flex-direction: column;
 
-	#svelte, main {
+	#svelte, main, .drawer-container {
 		display: flex;
 		flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
   		flex-direction: column;
