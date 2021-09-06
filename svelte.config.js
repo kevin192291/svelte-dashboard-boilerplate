@@ -18,10 +18,10 @@ const config = {
 		target: '#svelte',
 		vite: {
 			optimizeDeps: {
-				include: ['@carbon/charts'],
+				include: [],
 			},
 			ssr: {
-				noExternal: [production && '@carbon/charts'].filter(Boolean),
+				// noExternal: [production && '@carbon/charts'].filter(Boolean),
 			},
 		},
 	}
