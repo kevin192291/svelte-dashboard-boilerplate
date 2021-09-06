@@ -104,7 +104,7 @@
 		<Button on:click={() => (open = !open)}>
 		  <Label>Toggle Drawer</Label>
 		</Button>
-		<!-- <slot /> -->
+		<slot />
 	  </main>
 	</AppContent>
 </div>
