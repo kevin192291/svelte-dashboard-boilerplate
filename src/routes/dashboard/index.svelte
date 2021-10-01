@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import {flip} from "svelte/animate";
   import {dndzone} from "svelte-dnd-action";
+  import { InlineLoading } from "carbon-components-svelte";
 
     let items = [
         {id: 1, name: "item1", value: 1 },
@@ -37,6 +38,10 @@
       <div class="overview_card" animate:flip="{{duration: flipDurationMs}}">
         <div class="overview_card-info">{item.name}</div>
         <div class="overview_card-icon">{item.value}</div>
+        <InlineLoading status="active" description="Submitting..." />
+        <InlineLoading status="inactive" description="Cancelling..." />
+        <InlineLoading status="finished" description="Success" />
+        <InlineLoading status="error" description="An error occurred" />
       </div>
       {/each}
     </div>
