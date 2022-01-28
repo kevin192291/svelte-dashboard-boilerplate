@@ -30,6 +30,10 @@ body {
 		display: flex;
 		flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
   		flex-direction: column;
+
+		.card-body: {
+			background-color: #e9e9e9;
+		}
 	}
 	footer {
 		flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
