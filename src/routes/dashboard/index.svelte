@@ -16,7 +16,7 @@
 import DataCard from '$lib/components/data-card/DataCard.svelte';
 import type { IDataCardItem } from '$lib/interfaces/dataCard.interface';
 
-	let items: IDataCardItem = [
+	let items: IDataCardItem[] = [
 		{ id: 1, name: 'item1', value: 1, icon: 'https://via.placeholder.com/75' },
 		{ id: 2, name: 'item2', value: 2, icon: 'https://via.placeholder.com/75' },
 		{ id: 3, name: 'item3', value: 3, icon: 'https://via.placeholder.com/75' },

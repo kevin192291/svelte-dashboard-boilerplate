@@ -1,20 +1,29 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
 	import { Offcanvas } from 'sveltestrap';
 	import { ListGroup, ListGroupItem } from 'sveltestrap';
-	let open = false;
-	export const toggle = () => (open = !open);
+
+	let items;
+	menuItems.subscribe((MenuItems) => items = MenuItems);
+	
+	let open = true;
+	sideMenuOpen.subscribe((value: boolean) => (open = value));
+	const toggle = () => { sideMenuOpen.set(!open) };
+
+	// const menuClick = (items, item) {
+	// 	const i = items.find(i => i.name == item.name);
+	// 	i.isActive = true;
+	// 	menuItems.set(items);
+	// 	};
 </script>
 
 <header>
 	<div>
 		<Offcanvas header="No Backdrop" backdrop={true} isOpen={open} {toggle}>
 			<ListGroup flush>
-				<ListGroupItem disabled tag="a" href="#" active>Active</ListGroupItem>
-				<ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-				<ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-				<ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
-				<ListGroupItem tag="a" href="#" disabled>Disabled</ListGroupItem>
+				{#each items as item}
+					<ListGroupItem disabled tag="a" href={item.path}>{item.label}</ListGroupItem>
+				{/each}
 			</ListGroup>
 		</Offcanvas>
 	</div>
