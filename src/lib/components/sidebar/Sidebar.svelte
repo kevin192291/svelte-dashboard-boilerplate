@@ -10,11 +10,11 @@ import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
 	sideMenuOpen.subscribe((value: boolean) => (open = value));
 	const toggle = () => { sideMenuOpen.set(!open) };
 
-	// const menuClick = (items, item) {
-	// 	const i = items.find(i => i.name == item.name);
-	// 	i.isActive = true;
-	// 	menuItems.set(items);
-	// 	};
+	function menuClick (item) {
+		const i = items.find(i => i.name == item.name);
+		i.isActive = true;
+		menuItems.set(items);
+		};
 </script>
 
 <header>
@@ -22,7 +22,7 @@ import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
 		<Offcanvas header="No Backdrop" backdrop={true} isOpen={open} {toggle}>
 			<ListGroup flush>
 				{#each items as item}
-					<ListGroupItem disabled tag="a" href={item.path}>{item.label}</ListGroupItem>
+					<ListGroupItem tag="a" href="{item.path}" on:click={menuClick(item)}>{item.label}</ListGroupItem>
 				{/each}
 			</ListGroup>
 		</Offcanvas>
