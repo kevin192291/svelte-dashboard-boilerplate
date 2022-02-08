@@ -14,6 +14,7 @@ import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
 		const i = items.find(i => i.name == item.name);
 		i.isActive = true;
 		menuItems.set(items);
+		sideMenuOpen.set(false);
 		};
 </script>
 
