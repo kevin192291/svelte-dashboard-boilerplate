@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { headerMenuOpen, sideMenuOpen, menuItems } from '$lib/stores/app.store';
+	import { headerMenuOpen, sideMenuOpen, menuItems, showHeader } from '$lib/stores/app.store';
 
 	import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'sveltestrap';
 	$: outerWidth = 0;
@@ -12,6 +12,9 @@
 
 	let isOpen: boolean = false;
 	headerMenuOpen.subscribe((value) => (isOpen = value));
+
+	let _showHeader: boolean = true;
+	showHeader.subscribe((value) => (_showHeader = value));
 
 	const toggle = () => {
 		if (innerWidth > 700) {
@@ -26,10 +29,11 @@
 
 <svelte:window bind:innerWidth bind:outerWidth bind:innerHeight bind:outerHeight />
 
+{#if _showHeader == true}
 <Navbar color="light" light>
 	<NavbarBrand href="/" class="me-auto" id="header-nav">
 		<img id="logo" src="/images/cropwatch-logo.png" alt="CropWatch logo" />
-		CropWatch
+		CropWatch<small>™</small>
 	</NavbarBrand>
 
 	<NavbarToggler on:click={toggle} class="me-2" />
@@ -43,7 +47,7 @@
 		</Nav>
 	</Collapse>
 </Navbar>
-
+{/if}
 <style lang="scss">
 	#logo {
 		max-height: 55px;
