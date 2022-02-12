@@ -10,10 +10,10 @@
 		CardSubtitle,
 		CardText,
 		CardTitle,
-Dropdown,
-DropdownItem,
-DropdownMenu,
-DropdownToggle
+		Dropdown,
+		DropdownItem,
+		DropdownMenu,
+		DropdownToggle
 	} from 'sveltestrap';
 	import { dndzone } from 'svelte-dnd-action';
 	import DataCard from '$lib/components/data-card/DataCard.svelte';
@@ -100,7 +100,9 @@ DropdownToggle
 				<CardHeader>
 					<CardTitle>Another Chart</CardTitle>
 				</CardHeader>
-				<Bar {data} width={100} height={50} options={{ maintainAspectRatio: false }} />
+				<div class="card" style="max-height:500px;">
+					<Bar {data} width={100} height={50} options={{ maintainAspectRatio: false }} />
+				</div>
 			</div>
 		</div>
 	</div>
