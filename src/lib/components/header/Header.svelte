@@ -30,7 +30,7 @@
 <svelte:window bind:innerWidth bind:outerWidth bind:innerHeight bind:outerHeight />
 
 {#if _showHeader == true}
-<Navbar color="light" light>
+<Navbar color="dark" dark>
 	<NavbarBrand href="/" class="me-auto" id="header-nav">
 		<img id="logo" src="/images/cropwatch-logo.png" alt="CropWatch logo" />
 		CropWatch<small>™</small>
