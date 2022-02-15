@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-
+import { beforeNavigate } from "$app/navigation";
 	export const prerender = true;
 </script>
 

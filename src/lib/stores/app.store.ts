@@ -4,6 +4,7 @@ export const sideMenuOpen = writable(false);
 export const headerMenuOpen = writable(false);
 export const showHeader = writable(true);
 export const showFooter = writable(true);
+export const jwtToken = writable('');
 
 export const menuItems = writable([
   { path: '/', label: 'Home', icon: '', isActive: false },

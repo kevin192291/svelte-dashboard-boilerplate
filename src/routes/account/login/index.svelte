@@ -1,16 +1,43 @@
 <script lang="ts">
-import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
+	import { browserSet, Post } from '$lib/dataService';
 
 	import { showFooter, showHeader } from '$lib/stores/app.store';
 	showHeader.set(false);
 	showFooter.set(false);
 
-	function handleLogin() {
-		// Check Login
-        goto('/dashboard');
-		showHeader.set(true);
-		showFooter.set(true);
-	}
+	let email = '',
+		password = '',
+		error;
+
+	// function handleLogin() {
+	// 	// Check Login
+	//     goto('/dashboard');
+	// 	showHeader.set(true);
+	// 	showFooter.set(true);
+	// }
+
+	const handleLogin = async () => {
+		// if (browserGet('refreshToken')) {
+		// 	localStorage.removeItem('refreshToken');
+		// }
+		debugger;
+		await Post(`http://localhost:3000/authentication/login`, {
+			email: email,
+			password: password
+		})
+			.then((response) => {
+				console.log(response);
+				browserSet('jwt', response.data.access_token);
+				goto('/dashboard');
+				showHeader.set(true);
+				showFooter.set(true);
+			})
+			.catch((err) => {
+				error = err;
+				console.log(err);
+			});
+	};
 </script>
 
 <section>
@@ -21,10 +48,10 @@ import { goto } from '$app/navigation';
 
 		<form>
 			<label for="name">Username</label>
-			<input type="text" id="name" name="name" />
+			<input type="text" id="name" name="name" bind:value={email} />
 
 			<label for="password">Password</label>
-			<input type="password" id="password" name="password" />
+			<input type="password" id="password" name="password" bind:value={password} />
 
 			<button type="button" on:click|once={handleLogin}>Log in</button>
 		</form>
