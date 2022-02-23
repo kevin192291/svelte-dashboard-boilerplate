@@ -22,13 +22,13 @@
 		// 	localStorage.removeItem('refreshToken');
 		// }
 		debugger;
-		await Post(`http://localhost:3000/authentication/login`, {
+		await Post(`https://us-central1-cropwatch-api.cloudfunctions.net/cwapi/auth/login`, {
 			email: email,
 			password: password
 		})
 			.then((response) => {
 				console.log(response);
-				browserSet('jwt', response.data.access_token);
+				browserSet('jwt', response.token);
 				goto('/dashboard');
 				showHeader.set(true);
 				showFooter.set(true);
