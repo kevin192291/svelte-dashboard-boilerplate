@@ -1,55 +1,153 @@
 <script context="module" lang="ts">
-import { beforeNavigate } from "$app/navigation";
+	import { beforeNavigate, goto } from '$app/navigation';
+	import { Toast, ToastHeader } from 'sveltestrap';
 	export const prerender = true;
+
+	const nav = (link: string) => {
+		goto(link);
+	}
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
+<div class="container">
+	<div class="grid-1 callout"><a href="/assets">Asset Management</a></div>
 
-		to your new<br />SvelteKit app
-	</h1>
+	<div class="grid-2 callout"><a href="/dashboard">CropWatch</a></div>
 
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
+	<div class="grid-3 callout"><a href="/water/dashboard">WaterWatch</a></div>
 
-</section>
+	<div class="grid-4 callout"><a href="/ai/cameras/dashboard">AI</a></div>
+</div>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+<Toast autohide color="success" style="z-index: 10000; position: absolute; bottom: 10px; right: 10px;">
+	<ToastHeader icon='success'>Login Success!</ToastHeader>
+	Login Success
+</Toast>
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
+<style lang="scss">
+	.container {
+		display: -ms-grid;
+		display: grid;
+		-ms-grid-rows: (1fr);
+		grid-template-rows: repeat(2, 1fr);
+		-ms-grid-columns: (1fr);
+		grid-template-columns: repeat(4, 1fr);
 		width: 100%;
 		height: 100%;
-		top: 0;
-		display: block;
+		gap: 2.5px;
+	}
+
+	@media screen and (max-width: 60em) {
+		.container {
+			-ms-grid-rows: (1fr);
+			grid-template-rows: repeat(4, 1fr);
+		}
+	}
+
+	.grid-1 {
+		background-image: url('/images/assets/wearhouse.jpg');
+		background-size: cover;
+		-ms-grid-column: 1;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		-ms-grid-row: 1;
+		grid-row: 1;
+	}
+
+	@media screen and (max-width: 60em) {
+		.grid-1 {
+			-ms-grid-column: 1;
+			grid-column-start: 1;
+			grid-column-end: 5;
+			-ms-grid-row: 1;
+			grid-row: 1;
+		}
+	}
+
+	.grid-2 {
+		background-image: url('/images/farming/field.jpeg');
+		background-size: cover;
+		-ms-grid-column: 3;
+		grid-column-start: 3;
+		grid-column-end: 5;
+		-ms-grid-row: 1;
+		grid-row: 1;
+	}
+
+	@media screen and (max-width: 60em) {
+		.grid-2 {
+			-ms-grid-column: 1;
+			grid-column-start: 1;
+			grid-column-end: 5;
+			-ms-grid-row: 2;
+			grid-row: 2;
+		}
+	}
+
+	.grid-3 {
+		background-image: url('/images/metering/meter.jpg');
+		background-size: cover;
+		-ms-grid-column: 1;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		-ms-grid-row: 2;
+		grid-row: 2;
+	}
+
+	@media screen and (max-width: 60em) {
+		.grid-3 {
+			-ms-grid-column: 1;
+			grid-column-start: 1;
+			grid-column-end: 5;
+			-ms-grid-row: 3;
+			grid-row: 3;
+		}
+	}
+
+	.grid-4 {
+		background-image: url('/images/ai/camera.jpg');
+		background-size: cover;
+		-ms-grid-column: 3;
+		grid-column-start: 3;
+		grid-column-end: 5;
+		-ms-grid-row: 2;
+		grid-row: 2;
+	}
+
+	@media screen and (max-width: 60em) {
+		.grid-4 {
+			-ms-grid-column: 1;
+			grid-column-start: 1;
+			grid-column-end: 5;
+			-ms-grid-row: 4;
+			grid-row: 4;
+		}
+	}
+
+	.callout {
+		margin: 0;
+		text-align: center;
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 5px;
+			font-size: 3em;
+			height: 100%;
+		}
+
+		a:hover {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 5px;
+			font-size: 3.5em;
+			transition: width 2s, height 2s, transform 2s;
+			height: 100%;
+		}
 	}
 </style>

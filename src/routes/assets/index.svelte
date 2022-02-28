@@ -44,18 +44,18 @@
 		});
 
 		socket.on('event', (data) => {
-			// works in preview when server emits a message of type 'foo'..
-			console.log('event received:', data);
 			if (data.eui === 'AC1F09FFFE0526F0') data['name'] = 'Tatami Room';
 			if (data.eui === 'AC1F09FFFE052B55') data['name'] = 'Bed Room';
 			data['time'] = new Date().toLocaleString();
 			const seen_tag = events.findIndex((tag) => tag.tag_addr == data.tag_addr);
-			if (seen_tag >= 0 && parseInt(events[seen_tag].distance, 16) >= parseInt(data.distance, 16)) {
-				events[seen_tag] = data;
+			if (seen_tag >= 0 && (data.distance <= 7)) {
+			// 	console.log('new distance update: ', (events[seen_tag].distance < data.distance))
+			events[seen_tag] = data;
 			}
 			if (seen_tag === -1) {
-				events.push(data);
+				events.unshift(data);
 			}
+			if (events.length > 10) events.pop();
 			events = events;
 		});
 	};
@@ -104,6 +104,7 @@
 									<ListGroupItem>
 										Tag: "{event.tag_addr}"
 										{#if event.name}
+											is Distance: {event.distance}
 											is in: {event.name}
 										{:else}
 											is Distance: {event.distance}

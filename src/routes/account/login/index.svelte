@@ -3,35 +3,37 @@
 	import { browserSet, Post } from '$lib/dataService';
 
 	import { showFooter, showHeader } from '$lib/stores/app.store';
+	import { Spinner, Toast } from 'sveltestrap';
 	showHeader.set(false);
 	showFooter.set(false);
 
 	let email = '',
 		password = '',
-		error;
-
-	// function handleLogin() {
-	// 	// Check Login
-	//     goto('/dashboard');
-	// 	showHeader.set(true);
-	// 	showFooter.set(true);
-	// }
+		error = '',
+		loggingIn = false;
 
 	const handleLogin = async () => {
+		loggingIn = true;
 		// if (browserGet('refreshToken')) {
 		// 	localStorage.removeItem('refreshToken');
 		// }
 		debugger;
-		await Post(`https://us-central1-cropwatch-api.cloudfunctions.net/cwapi/auth/login`, {
+		await Post(`http://localhost:3000/auth/login`, {
 			email: email,
 			password: password
 		})
 			.then((response) => {
 				console.log(response);
-				browserSet('jwt', response.token);
-				goto('/dashboard');
-				showHeader.set(true);
-				showFooter.set(true);
+				if (response.status === 201) {
+					browserSet('jwt', response.token);
+					goto('/');
+					showHeader.set(true);
+					showFooter.set(true);
+				} else {
+					loggingIn = false;
+					error = response.error;
+					throw error;
+				}
 			})
 			.catch((err) => {
 				error = err;
@@ -53,7 +55,13 @@
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password" bind:value={password} />
 
-			<button type="button" on:click|once={handleLogin}>Log in</button>
+			<button type="button" on:click|once={handleLogin} disabled={loggingIn}>
+				{#if loggingIn}
+					<Spinner color="primary" />
+				{:else}
+					Log in
+				{/if}
+			</button>
 		</form>
 
 		<div class="text-info">

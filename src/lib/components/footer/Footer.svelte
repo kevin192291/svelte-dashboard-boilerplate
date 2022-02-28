@@ -8,6 +8,7 @@ showFooter.subscribe((value) => {
 </script>
 
 {#if _showFooter}
+<br>
 <footer>
     <div class="footer_copyright">Made for CropWatch LLC with &hearts;</div>
 </footer>

@@ -47,6 +47,7 @@
 		</Nav>
 	</Collapse>
 </Navbar>
+<br>
 {/if}
 <style lang="scss">
 	#logo {
