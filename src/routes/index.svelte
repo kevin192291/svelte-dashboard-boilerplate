@@ -22,10 +22,7 @@
 	<div class="grid-4 callout"><a href="/ai/cameras/dashboard">AI</a></div>
 </div>
 
-<Toast autohide color="success" style="z-index: 10000; position: absolute; bottom: 10px; right: 10px;">
-	<ToastHeader icon='success'>Login Success!</ToastHeader>
-	Login Success
-</Toast>
+
 
 <style lang="scss">
 	.container {

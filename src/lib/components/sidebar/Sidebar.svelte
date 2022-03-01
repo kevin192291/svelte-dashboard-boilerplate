@@ -1,6 +1,6 @@
 <script lang="ts">
 import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
-	import { Offcanvas } from 'sveltestrap';
+	import { Icon, Offcanvas } from 'sveltestrap';
 	import { ListGroup, ListGroupItem } from 'sveltestrap';
 
 	let items;
@@ -20,10 +20,12 @@ import { menuItems, sideMenuOpen } from '$lib/stores/app.store';
 
 <header>
 	<div>
-		<Offcanvas header="No Backdrop" backdrop={true} isOpen={open} {toggle}>
+		<Offcanvas header="CropWatch Menu" backdrop={true} isOpen={open} {toggle}>
 			<ListGroup flush>
 				{#each items as item}
-					<ListGroupItem tag="a" href="{item.path}" on:click={menuClick(item)}>{item.label}</ListGroupItem>
+					<ListGroupItem tag="a" href="{item.path}" on:click={menuClick(item)}>
+						<Icon name="{item.icon}" />&nbsp;{item.label}
+					</ListGroupItem>
 				{/each}
 			</ListGroup>
 		</Offcanvas>

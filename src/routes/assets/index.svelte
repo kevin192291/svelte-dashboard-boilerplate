@@ -134,7 +134,6 @@
 				</CardHeader>
 				<div class="card" style="max-height:500px;">
 					<div class="building">
-						<button on:click={send}>Send</button>
 						<div class="asset" style="left: {leftPos}px;" bind:this={myHtmlElementA}>&nbsp;</div>
 						<Tooltip target={myHtmlElementA}>
 							<pre>

@@ -3,14 +3,18 @@
 	import { browserSet, Post } from '$lib/dataService';
 
 	import { showFooter, showHeader } from '$lib/stores/app.store';
-	import { Spinner, Toast } from 'sveltestrap';
+	import { Spinner, Toast, ToastHeader } from 'sveltestrap';
 	showHeader.set(false);
 	showFooter.set(false);
 
 	let email = '',
 		password = '',
 		error = '',
-		loggingIn = false;
+		loggingIn = false,
+		isToastOpen = false,
+		toastStatus = '',
+		toastMessage = '';
+
 
 	const handleLogin = async () => {
 		loggingIn = true;
@@ -25,12 +29,18 @@
 			.then((response) => {
 				console.log(response);
 				if (response.status === 201) {
+					toastMessage = 'Login Successful';
+					toastStatus = 'success';
+					isToastOpen = true;
 					browserSet('jwt', response.token);
 					goto('/');
 					showHeader.set(true);
 					showFooter.set(true);
 				} else {
 					loggingIn = false;
+					toastMessage = 'Login Failed';
+					toastStatus = 'danger';
+					isToastOpen = true;
 					error = response.error;
 					throw error;
 				}
@@ -74,6 +84,11 @@
 		<p>System Tagline here</p>
 	</div>
 </section>
+
+<Toast isOpen={isToastOpen} autohide color="success" style="z-index: 10000; position: absolute; bottom: 10px; right: 10px;">
+	<ToastHeader icon='success'>Login {toastStatus}!</ToastHeader>
+	{toastMessage}
+</Toast>
 
 <style lang="scss">
 	section {
