@@ -1,11 +1,41 @@
 <script context="module" lang="ts">
-	import { beforeNavigate, goto } from '$app/navigation';
 	import { Toast, ToastHeader } from 'sveltestrap';
+	import jwt_decode, { JwtPayload } from 'jwt-decode';
+	import { navigating } from '$app/stores';
+	import { browser } from '$app/env';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	export const prerender = true;
 
 	const nav = (link: string) => {
 		goto(link);
-	}
+	};
+
+	onMount(async () => {
+		if (browser) {
+			// Use Goto to redirect users if neccessary
+			console.log('layout loaded');
+			debugger;
+			
+			navigating.subscribe((run) => {
+				if (browser && run) {
+					console.log(`Navigating from ${run.from} to ${run.to}`);
+					const jwtString = localStorage.getItem('jwt');
+					if (jwtString) {
+						const decodedJwt: any = jwt_decode<JwtPayload>(jwtString);
+						debugger;
+						if (new Date(decodedJwt.exp * 1000) <= new Date()) {
+							console.log('JWT has expired by');
+							localStorage.removeItem('jwt');
+							goto('/login');
+						}
+					} else {
+						goto('/login');
+					}
+				}
+			});
+		}
+	});
 </script>
 
 <svelte:head>
@@ -21,8 +51,6 @@
 
 	<div class="grid-4 callout"><a href="/ai/cameras/dashboard">AI</a></div>
 </div>
-
-
 
 <style lang="scss">
 	.container {

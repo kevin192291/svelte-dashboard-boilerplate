@@ -27,8 +27,7 @@
 			password: password
 		})
 			.then((response) => {
-				console.log(response);
-				if (response.status === 201) {
+				if (response && response.status === 201) {
 					toastMessage = 'Login Successful';
 					toastStatus = 'success';
 					isToastOpen = true;
@@ -55,6 +54,7 @@
 <section>
 	<div class="login-form">
 		<h1><span id="company-name">CropWatch Login</span> <i class="fas fa-atlas" /></h1>
+		<img src="/images/cropwatch-logo.png" />
 		<h3>Sign in</h3>
 		<!-- <p>with your company account</p> -->
 
@@ -171,7 +171,7 @@
 
 	button:active,
 	button:hover {
-		background-color: #a21129;
+		background-color: #3098e1;
 	}
 
 	.text-info {
@@ -188,7 +188,7 @@
 	}
 
 	.text-info a {
-		color: #a21129;
+		color: var(--cw-sapphire);
 		text-decoration: none;
 		transition: color ease-in 0.3s;
 	}

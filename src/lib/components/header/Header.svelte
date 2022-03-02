@@ -55,5 +55,8 @@
 	}
 	.nav {
 		margin-bottom: 10px !important;
+		.navbar-dark .navbar-brand {
+			color: var(--cw-saphire);
+		}
 	}
 </style>
