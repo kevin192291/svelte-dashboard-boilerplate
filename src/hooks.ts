@@ -1,14 +1,11 @@
 import cookie from 'cookie';
 import { v4 as uuid } from '@lukeed/uuid';
 import type { Handle } from '@sveltejs/kit';
-import { browser } from "$app/env";
-import { onMount } from 'svelte';
-import { goto } from '$app/navigation';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
 	event.locals.userid = cookies.userid || uuid();
-	// console.log(cookies);
+	console.log(cookies);
 
 	// TODO https://github.com/sveltejs/kit/issues/1046
 	// if (event.params.query.includes('_method')) {

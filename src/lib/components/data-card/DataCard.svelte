@@ -27,7 +27,7 @@
     <div class="card-content">
       <img src="https://via.placeholder.com/75" alt="{item.name} icon" />
       <div class="overview_card-info">{item.name}</div>
-      <div class="overview_card-value">{item.value}</div>
+      <div class="overview_card-value">{item.value.toFixed(2)}</div>
     </div>
     <CardFooter>
       <Button>More Info...</Button>

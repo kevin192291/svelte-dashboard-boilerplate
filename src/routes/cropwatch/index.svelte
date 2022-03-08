@@ -101,7 +101,7 @@
 					<CardTitle>Another Chart</CardTitle>
 				</CardHeader>
 				<div class="card" style="max-height:500px;">
-					<Bar {data} width={100} height={50} options={{ maintainAspectRatio: false }} />
+					<Bar {data} width={270} height={50} options={{ maintainAspectRatio: true }} />
 				</div>
 			</div>
 		</div>

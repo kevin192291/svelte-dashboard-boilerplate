@@ -20,6 +20,24 @@ export const Post = async (url: string, data: any) => {
         .catch(e => handleError(e));
 };
 
+export const Get = async (url: string) => {
+    return await fetch(`${url}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${browserGet('jwt') ? browserGet('jwt') : ''}`
+        },
+    })
+        .then(r => checkStatus(r))
+        .then(r => r.json())
+        .then(data => {
+            console.log(data);
+            return data;
+        })
+        .catch(e => handleError(e));
+};
+
 
 export const browserGet = (key: string):string | undefined => {
     if (browser) {

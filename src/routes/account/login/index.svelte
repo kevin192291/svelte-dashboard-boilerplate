@@ -21,7 +21,6 @@
 		// if (browserGet('refreshToken')) {
 		// 	localStorage.removeItem('refreshToken');
 		// }
-		debugger;
 		await Post(`http://localhost:3000/auth/login`, {
 			email: email,
 			password: password
@@ -31,7 +30,7 @@
 					toastMessage = 'Login Successful';
 					toastStatus = 'success';
 					isToastOpen = true;
-					browserSet('jwt', response.token);
+					browserSet('jwt', response.data);
 					goto('/');
 					showHeader.set(true);
 					showFooter.set(true);
